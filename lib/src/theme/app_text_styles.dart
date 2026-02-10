@@ -8,10 +8,7 @@ class AppTextStyles {
     color: AppColors.textPrimary,
   );
 
-  static const body = TextStyle(
-    fontSize: 14,
-    color: AppColors.textSecondary,
-  );
+  static const body = TextStyle(fontSize: 14, color: AppColors.textSecondary);
 
   static const button = TextStyle(
     fontSize: 16,

@@ -11,6 +11,20 @@ dependencies:
   flutter:
     sdk: flutter
 
+  flutter_screenutil: ^5.9.3
+  carousel_slider: ^5.1.2
+  cached_network_image: ^3.4.1
+  video_player: ^2.10.1
+  image_picker: ^1.2.1
+  get: ^4.7.3
+  file_picker: ^10.3.10
+  flutter_rating_bar: ^4.0.1
+  intl: ^0.20.2
+  shared_preferences: ^2.5.4
+  flutter_secure_storage: ^10.0.0
+  flutter_pdfview: ^1.4.4
+  dropdown_search: ^6.0.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

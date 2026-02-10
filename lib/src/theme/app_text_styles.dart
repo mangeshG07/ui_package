@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'app_colors.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AppTextStyles {
   static const heading = TextStyle(
     fontSize: 20,
@@ -14,5 +14,17 @@ class AppTextStyles {
     fontSize: 16,
     fontWeight: FontWeight.w500,
     color: Colors.white,
+  );
+
+
+  static TextStyle hint = TextStyle(
+    fontSize: 14,
+    color: Colors.grey,
+  );
+
+  static TextStyle label = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    color: Colors.grey,
   );
 }

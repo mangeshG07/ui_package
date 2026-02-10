@@ -6,4 +6,6 @@ class AppColors {
   static const textPrimary = Color(0xFF0F172A);
   static const textSecondary = Color(0xFF475569);
   static const error = Color(0xFFDC2626);
+  static const Color inputFill = Colors.white;
+  static const Color border = Colors.grey;
 }

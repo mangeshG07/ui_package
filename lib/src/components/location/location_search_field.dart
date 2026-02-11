@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ui_package/ui_package.dart';
-import 'debouncer.dart';
+import '../../utils/debouncer.dart';
 
 class LocationSearchField extends StatefulWidget {
   final TextEditingController controller;

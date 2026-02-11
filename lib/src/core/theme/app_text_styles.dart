@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AppTextStyles {
+  AppTextStyles._();
   static const heading = TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.w600,

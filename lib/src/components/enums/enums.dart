@@ -24,3 +24,6 @@ typedef LocationSearchCallback =
     Future<List<Map<String, dynamic>>> Function(String query);
 
 typedef LocationSelectedCallback = void Function(Map<String, dynamic> location);
+
+
+enum AppPermission { camera, storage, photos, location, notification }

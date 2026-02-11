@@ -1,11 +1,8 @@
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// A helper class for local storage.
 /// Supports both SharedPreferences and SecureStorage.
 class LocalStorage {
-  static final _secureStorage = FlutterSecureStorage();
-
   /// --------------------------
   /// SharedPreferences Methods
   /// --------------------------
@@ -48,25 +45,5 @@ class LocalStorage {
   static Future<void> clear() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.clear();
-  }
-
-  /// --------------------------
-  /// Secure Storage Methods
-  /// --------------------------
-
-  static Future<void> setSecureString(String key, String value) async {
-    await _secureStorage.write(key: key, value: value);
-  }
-
-  static Future<String?> getSecureString(String key) async {
-    return await _secureStorage.read(key: key);
-  }
-
-  static Future<void> removeSecure(String key) async {
-    await _secureStorage.delete(key: key);
-  }
-
-  static Future<void> clearSecure() async {
-    await _secureStorage.deleteAll();
   }
 }

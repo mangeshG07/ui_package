@@ -1,13 +1,14 @@
 library ui_package;
 
 // THEME
-export 'src/theme/app_theme.dart';
-export 'src/theme/app_colors.dart';
-export 'src/theme/app_text_styles.dart';
-export 'src/theme/app_spacing.dart';
+export 'src/core/theme/app_theme.dart';
+export 'src/core/theme/app_colors.dart';
+export 'src/core/theme/app_text_styles.dart';
+export 'src/core/theme/app_spacing.dart';
 
 // LAYOUT
-export 'src/layout/base_scaffold.dart';
+export 'src/state/base_scaffold.dart';
+export 'src/components/shimmer/app_shimmer.dart';
 
 // COMPONENTS
 export 'src/components/buttons/app_button.dart';
@@ -28,8 +29,17 @@ export 'src/components/review/app_review.dart';
 export 'src/components/screen_util/screen_util_wrapper.dart';
 export 'src/components/formatter/time_formatter.dart';
 export 'src/components/video/video_preview.dart';
-export 'src/components/local_storage/local_storage.dart';
-export 'src/components/mixins/pagination_mixins.dart';
-export 'src/components/mixins/pagination_state.dart';
+export 'src/local_storage/local_storage.dart';
+export 'src/local_storage/secure_storage_service.dart';
+export 'src/state/pagination/pagination_mixins.dart';
+export 'src/state/pagination/pagination_state.dart';
 export 'src/components/validator/app_validators.dart';
 export 'src/components/maintenance/app_maintenance.dart';
+export 'src/components/permission/app_permission.dart';
+export 'src/components/dropdown/app_search_dropdown.dart';
+export 'src/components/dropdown/app_multi_dropdown.dart';
+export 'src/network/app_api_client.dart';
+export 'src/network/app_api_response.dart';
+export 'src/network/app_network_exception.dart';
+export 'src/utils/app_internet.dart';
+export 'src/components/dialogs/app_dialog.dart';

@@ -54,14 +54,11 @@ class AppTextField extends StatelessWidget {
   InputDecoration _decoration() {
     return InputDecoration(
       filled: true,
+      isDense: true,
       fillColor: fillColor ?? AppColors.inputFill,
       labelText: hintText,
-      isDense: true, // ✅ ADD THIS
-      labelStyle: TextStyle(fontSize: 12.sp, color: Colors.grey),
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 12,
-        vertical: 8, // reduced height
-      ),
+      labelStyle: TextStyle(fontSize: 12.sp, color: AppColors.border),
+      contentPadding: const EdgeInsets.all(15),
       border: _border(),
       enabledBorder: _border(),
       focusedBorder: _border(),

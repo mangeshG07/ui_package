@@ -39,20 +39,19 @@ class DropdownSearchComponent<T> extends StatelessWidget {
       decoratorProps: DropDownDecoratorProps(
         decoration: InputDecoration(
           labelText: hintText,
-          labelStyle: TextStyle(
-            fontSize: 14.sp,
-            color: AppColors.border,
-            fontWeight: FontWeight.normal,
-          ),
+          labelStyle: TextStyle(fontSize: 12.sp, color: AppColors.border),
           filled: true,
           isDense: true,
           fillColor: Colors.white,
-          contentPadding: const EdgeInsets.all(15),
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 12,
+            vertical: 8, // reduced height
+          ),
           border: _borderStyle(),
           enabledBorder: _borderStyle(),
           focusedBorder: _borderStyle(),
           errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(8),
             borderSide: const BorderSide(color: Colors.red),
           ),
         ),
@@ -60,22 +59,24 @@ class DropdownSearchComponent<T> extends StatelessWidget {
 
       items: (filter, infiniteScrollProps) => items,
       itemAsString: itemAsString ?? (item) => item.toString(),
+
       popupProps: PopupProps.menu(
         fit: FlexFit.loose,
         constraints: BoxConstraints.tightFor(height: dropdownHeight),
         showSearchBox: showSearchBox,
         menuProps: const MenuProps(backgroundColor: Colors.white),
+
         searchFieldProps: TextFieldProps(
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.symmetric(
-              horizontal: 12,
-              vertical: 10,
+              horizontal: 10,
+              vertical: 6, // smaller search box
             ),
             border: _borderStyle(),
             hintText: searchHintText,
             hintStyle: const TextStyle(
               color: Colors.grey,
-              fontWeight: FontWeight.normal,
+              fontSize: 12,
             ),
           ),
         ),
@@ -86,8 +87,8 @@ class DropdownSearchComponent<T> extends StatelessWidget {
 
   OutlineInputBorder _borderStyle() {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10),
-      borderSide: BorderSide(color: AppColors.border),
+      borderRadius: BorderRadius.circular(8),
+      borderSide: BorderSide(color: Colors.grey.shade300),
     );
   }
 }

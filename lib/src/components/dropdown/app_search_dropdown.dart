@@ -45,6 +45,7 @@ class DropdownSearchComponent<T> extends StatelessWidget {
             fontWeight: FontWeight.normal,
           ),
           filled: true,
+          isDense: true,
           fillColor: Colors.white,
           contentPadding: const EdgeInsets.all(15),
           border: _borderStyle(),

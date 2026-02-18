@@ -39,6 +39,7 @@ class AppTextField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       enabled: enabled,
+
       maxLines: maxLines,
       obscureText: obscureText,
       keyboardType: keyboardType,
@@ -53,11 +54,15 @@ class AppTextField extends StatelessWidget {
 
   InputDecoration _decoration() {
     return InputDecoration(
+      isDense: true,
       filled: true,
       fillColor: fillColor ?? AppColors.inputFill,
       labelText: hintText,
       labelStyle: AppTextStyles.hint,
-      contentPadding: EdgeInsets.all(15.w),
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 12,
+        vertical: 8, // reduced height
+      ),
       border: _border(),
       enabledBorder: _border(),
       focusedBorder: _border(),
@@ -69,14 +74,14 @@ class AppTextField extends StatelessWidget {
 
   OutlineInputBorder _border() {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12.r),
-      borderSide: const BorderSide(color: AppColors.border),
+      borderRadius: BorderRadius.circular(8.r),
+      borderSide: BorderSide(color: Colors.grey.shade300),
     );
   }
 
   OutlineInputBorder _errorBorder() {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12.r),
+      borderRadius: BorderRadius.circular(8.r),
       borderSide: const BorderSide(color: AppColors.error),
     );
   }

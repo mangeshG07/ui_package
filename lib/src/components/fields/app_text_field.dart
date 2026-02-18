@@ -39,7 +39,6 @@ class AppTextField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       enabled: enabled,
-
       maxLines: maxLines,
       obscureText: obscureText,
       keyboardType: keyboardType,
@@ -54,7 +53,6 @@ class AppTextField extends StatelessWidget {
 
   InputDecoration _decoration() {
     return InputDecoration(
-      isDense: true,
       filled: true,
       fillColor: fillColor ?? AppColors.inputFill,
       labelText: hintText,

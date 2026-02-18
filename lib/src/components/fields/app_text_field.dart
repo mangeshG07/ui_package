@@ -56,7 +56,8 @@ class AppTextField extends StatelessWidget {
       filled: true,
       fillColor: fillColor ?? AppColors.inputFill,
       labelText: hintText,
-      labelStyle: TextStyle(fontSize: 14.sp, color: Colors.grey),
+      isDense: true, // ✅ ADD THIS
+      labelStyle: TextStyle(fontSize: 12.sp, color: Colors.grey),
       contentPadding: const EdgeInsets.symmetric(
         horizontal: 12,
         vertical: 8, // reduced height

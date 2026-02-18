@@ -74,10 +74,7 @@ class DropdownSearchComponent<T> extends StatelessWidget {
             ),
             border: _borderStyle(),
             hintText: searchHintText,
-            hintStyle: const TextStyle(
-              color: Colors.grey,
-              fontSize: 12,
-            ),
+            hintStyle: const TextStyle(color: Colors.grey, fontSize: 12),
           ),
         ),
       ),
@@ -87,7 +84,7 @@ class DropdownSearchComponent<T> extends StatelessWidget {
 
   OutlineInputBorder _borderStyle() {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: BorderRadius.circular(8.r),
       borderSide: BorderSide(color: Colors.grey.shade300),
     );
   }

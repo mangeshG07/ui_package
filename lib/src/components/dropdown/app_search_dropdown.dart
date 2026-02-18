@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ui_package/src/core/theme/app_colors.dart';
 import 'package:ui_package/ui_package.dart';
 
@@ -39,12 +40,13 @@ class DropdownSearchComponent<T> extends StatelessWidget {
         decoration: InputDecoration(
           labelText: hintText,
           labelStyle: TextStyle(
+            fontSize: 14.sp,
             color: AppColors.border,
             fontWeight: FontWeight.normal,
           ),
           filled: true,
           fillColor: Colors.white,
-          contentPadding: const EdgeInsets.symmetric(horizontal: 12),
+          contentPadding: const EdgeInsets.all(15),
           border: _borderStyle(),
           enabledBorder: _borderStyle(),
           focusedBorder: _borderStyle(),

@@ -39,7 +39,7 @@ class DropdownSearchComponent<T> extends StatelessWidget {
       decoratorProps: DropDownDecoratorProps(
         decoration: InputDecoration(
           labelText: hintText,
-          labelStyle: TextStyle(fontSize: 12.sp, color: AppColors.border),
+          labelStyle: TextStyle(fontSize: 12.sp, color: AppColors.grey200),
           filled: true,
           isDense: true,
           fillColor: Colors.white,

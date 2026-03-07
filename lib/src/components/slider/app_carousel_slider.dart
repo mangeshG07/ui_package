@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppCarouselSlider extends StatefulWidget {
   final List<String> imageUrls;
 
-  final double height;
+  final double? height;
   final double borderRadius;
-  final EdgeInsetsGeometry margin;
+  final EdgeInsets? margin;
 
   final bool autoPlay;
   final Duration autoPlayInterval;
@@ -52,7 +53,7 @@ class _AppCarouselSliderState extends State<AppCarouselSlider> {
       children: [
         CarouselSlider(
           options: CarouselOptions(
-            height: widget.height,
+            height: widget.height?.h ?? 200.h,
             viewportFraction: 1,
             autoPlay: widget.autoPlay,
             autoPlayInterval: widget.autoPlayInterval,
@@ -70,7 +71,7 @@ class _AppCarouselSliderState extends State<AppCarouselSlider> {
 
   Widget _buildImage(String url) {
     return Container(
-      margin: widget.margin,
+      margin: widget.margin ?? EdgeInsets.symmetric(horizontal: 4.w),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(widget.borderRadius),
         boxShadow: [

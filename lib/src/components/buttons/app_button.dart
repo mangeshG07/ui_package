@@ -117,7 +117,7 @@ class AppButton extends StatelessWidget {
   }
 
   TextStyle _textStyle() {
-    return AppTextStyles.button.copyWith(
+    return AppTextStyles.h6.copyWith(
       color:
           textColor ??
           (type == AppButtonType.primary ? Colors.white : Colors.blue),

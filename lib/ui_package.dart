@@ -5,6 +5,7 @@ export 'src/core/theme/app_theme.dart';
 export 'src/core/theme/app_colors.dart';
 export 'src/core/theme/app_text_styles.dart';
 export 'src/core/theme/app_spacing.dart';
+export 'src/core/theme/app_radius.dart';
 
 // LAYOUT
 export 'src/state/base_scaffold.dart';
@@ -52,4 +53,3 @@ export 'src/components/show_case/app_showcase_widget.dart';
 export 'src/utils/dimens.dart';
 export 'src/utils/size_context.dart';
 export 'src/utils/check_device_size.dart';
-export 'src/core/theme/app_radius.dart';

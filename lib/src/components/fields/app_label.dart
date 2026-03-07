@@ -1,75 +1,128 @@
 import 'package:flutter/material.dart';
-import 'package:ui_package/ui_package.dart';
+import '../../core/theme/app_text_styles.dart';
+import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_spacing.dart';
 
-/// A reusable professional form label widget.
-///
-/// Features:
-/// - Required indicator (*)
-/// - Custom style override
-/// - Custom required color
-/// - Custom bottom spacing
-/// - Optional suffix widget
-/// - Theme friendly
 class AppLabel extends StatelessWidget {
-  /// Main label text
   final String text;
-
-  /// Whether to show required asterisk
-  final bool isRequired;
-
-  /// Custom text style (optional)
   final TextStyle? style;
-
-  /// Custom required color (optional)
-  final Color? requiredColor;
-
-  /// Bottom spacing
-  final double bottomSpacing;
-
-  /// Optional widget at end (ex: info icon)
+  final Color? color;
+  final double? fontSize;
+  final FontWeight? fontWeight;
+  final TextAlign? textAlign;
+  final int? maxLines;
+  final TextOverflow? overflow;
+  final bool isRequired;
+  final Widget? prefix;
   final Widget? suffix;
+  final EdgeInsets? padding;
+  final bool showRequiredAsterisk;
 
   const AppLabel({
     super.key,
     required this.text,
-    this.isRequired = false,
     this.style,
-    this.requiredColor,
-    this.bottomSpacing = 6,
+    this.color,
+    this.fontSize,
+    this.fontWeight,
+    this.textAlign,
+    this.maxLines,
+    this.overflow,
+    this.isRequired = false,
+    this.prefix,
     this.suffix,
+    this.padding,
+    this.showRequiredAsterisk = true,
   });
+
+  factory AppLabel.required({
+    required String text,
+    TextStyle? style,
+    Color? color,
+    double? fontSize,
+    FontWeight? fontWeight,
+  }) {
+    return AppLabel(
+      text: text,
+      style: style,
+      color: color,
+      fontSize: fontSize,
+      fontWeight: fontWeight,
+      isRequired: true,
+    );
+  }
+
+  factory AppLabel.small(String text) {
+    return AppLabel(
+      text: text,
+      style: AppTextStyles.labelSmall,
+    );
+  }
+
+  factory AppLabel.medium(String text) {
+    return AppLabel(
+      text: text,
+      style: AppTextStyles.labelMedium,
+    );
+  }
+
+  factory AppLabel.large(String text) {
+    return AppLabel(
+      text: text,
+      style: AppTextStyles.labelLarge,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    final defaultStyle = style ?? AppTextStyles.label;
+    final textWidget = Text(
+      text,
+      style: _getStyle(),
+      textAlign: textAlign,
+      maxLines: maxLines,
+      overflow: overflow,
+    );
+
+    if (prefix == null && suffix == null && !isRequired) {
+      return Padding(
+        padding: padding ?? EdgeInsets.zero,
+        child: textWidget,
+      );
+    }
 
     return Padding(
-      padding: EdgeInsets.only(bottom: bottomSpacing),
+      padding: padding ?? EdgeInsets.zero,
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Expanded(
-            child: RichText(
-              text: TextSpan(
-                text: text,
-                style: defaultStyle,
-                children: isRequired
-                    ? [
-                        TextSpan(
-                          text: ' *',
-                          style: defaultStyle.copyWith(
-                            color: requiredColor ?? AppColors.error,
-                          ),
-                        ),
-                      ]
-                    : [],
+          if (prefix != null) ...[
+            prefix!,
+            AppSpacing.horizontalXS,
+          ],
+          textWidget,
+          if (isRequired && showRequiredAsterisk) ...[
+            AppSpacing.horizontalXXS,
+            Text(
+              '*',
+              style: _getStyle().copyWith(
+                color: AppColors.error,
               ),
             ),
-          ),
-
-          if (suffix != null) ...[const SizedBox(width: 6), suffix!],
+          ],
+          if (suffix != null) ...[
+            AppSpacing.horizontalXS,
+            suffix!,
+          ],
         ],
       ),
+    );
+  }
+
+  TextStyle _getStyle() {
+    return (style ?? AppTextStyles.labelMedium).copyWith(
+      color: color ?? (style?.color ?? AppColors.grey700),
+      fontSize: fontSize ?? style?.fontSize,
+      fontWeight: fontWeight ?? style?.fontWeight,
     );
   }
 }

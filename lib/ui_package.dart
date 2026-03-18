@@ -13,6 +13,7 @@ export 'src/components/shimmer/app_shimmer.dart';
 
 // COMPONENTS
 export 'src/components/buttons/app_button.dart';
+export 'src/components/buttons/animated_button.dart';
 export 'src/components/fields/app_text_field.dart';
 export 'src/components/fields/app_label.dart';
 export 'src/components/fields/app_multi_dropdown.dart';

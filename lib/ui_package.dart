@@ -54,3 +54,4 @@ export 'src/components/show_case/app_showcase_widget.dart';
 export 'src/utils/dimens.dart';
 export 'src/utils/size_context.dart';
 export 'src/utils/check_device_size.dart';
+export 'src/utils/debouncer.dart';

@@ -46,7 +46,7 @@ class AppMultiDropdown extends StatelessWidget {
           ),
         ),
       ),
-      popupProps: PopupPropsMultiSelection.menu(
+      popupProps: MultiSelectionPopupProps.menu(
         showSelectedItems: false,
         menuProps: MenuProps(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -54,7 +54,7 @@ class AppMultiDropdown extends StatelessWidget {
         ),
         constraints: const BoxConstraints(maxHeight: 300),
       ),
-      onChanged: onChanged,
+      onSelected: onChanged,
     );
   }
 }

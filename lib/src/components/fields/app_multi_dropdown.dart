@@ -44,8 +44,8 @@ class MultiSelectDropdown extends StatelessWidget {
           selectedItems: selectedItems,
           items: (filter, infiniteScrollProps) =>
               items.map((item) => item['name'].toString()).toList(),
-          onChanged: onChanged,
-          popupProps: PopupPropsMultiSelection.menu(
+          onSelected: onChanged,
+          popupProps: MultiSelectionPopupProps.menu(
             showSearchBox: true,
             menuProps: MenuProps(
               backgroundColor: Colors.white,

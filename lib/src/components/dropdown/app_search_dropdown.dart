@@ -78,7 +78,7 @@ class DropdownSearchComponent<T> extends StatelessWidget {
           ),
         ),
       ),
-      onChanged: onChanged,
+      onSelected: onChanged,
     );
   }
 

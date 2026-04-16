@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:widget_zoom/widget_zoom.dart';
 
 /// Utility functions (replace these with your own implementation)
 Color getFileTypeColor(String extension) {
@@ -33,21 +34,7 @@ IconData getIconForFile(String name) {
   }
 }
 
-/// Placeholder for image zoom widget (replace with actual)
-class WidgetZoom extends StatelessWidget {
-  final Widget zoomWidget;
-  final String heroAnimationTag;
-  const WidgetZoom({
-    super.key,
-    required this.zoomWidget,
-    required this.heroAnimationTag,
-  });
 
-  @override
-  Widget build(BuildContext context) {
-    return zoomWidget;
-  }
-}
 
 /// Multiple attachments preview
 class AttachmentPreviewList extends StatelessWidget {

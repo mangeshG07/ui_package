@@ -1,58 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:ui_package/src/components/images/file_utils.dart';
+import 'package:ui_package/ui_package.dart';
 import 'package:widget_zoom/widget_zoom.dart';
-
-/// Utility functions (replace these with your own implementation)
-Color getFileTypeColor(String extension) {
-  switch (extension) {
-    case 'pdf':
-      return Colors.red;
-    case 'doc':
-    case 'docx':
-      return Colors.blue;
-    case 'xls':
-    case 'xlsx':
-      return Colors.green;
-    default:
-      return Colors.grey;
-  }
-}
-
-IconData getIconForFile(String name) {
-  final ext = name.split('.').last.toLowerCase();
-  switch (ext) {
-    case 'pdf':
-      return Icons.picture_as_pdf;
-    case 'doc':
-    case 'docx':
-      return Icons.description;
-    case 'xls':
-    case 'xlsx':
-      return Icons.grid_on;
-    default:
-      return Icons.insert_drive_file;
-  }
-}
-
-
 
 /// Multiple attachments preview
 class AttachmentPreviewList extends StatelessWidget {
   final List<String> attachments;
   final void Function(String path) onDownload;
-  final bool isDownload;
+  final AttachmentPreviewConfig config;
 
   const AttachmentPreviewList({
     super.key,
     required this.attachments,
     required this.onDownload,
-    this.isDownload = true,
+    this.config = const AttachmentPreviewConfig(),
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: Get.height * 0.17,
+      height: config.height,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: attachments.length,
@@ -60,10 +29,10 @@ class AttachmentPreviewList extends StatelessWidget {
           final file = attachments[index];
           return Padding(
             padding: const EdgeInsets.only(right: 12),
-            child: SingleAttachmentCard(
+            child: AttachmentCard(
               file: file,
               onDownload: onDownload,
-              isDownload: isDownload,
+              config: config,
             ),
           );
         },
@@ -73,31 +42,32 @@ class AttachmentPreviewList extends StatelessWidget {
 }
 
 /// Single attachment card
-class SingleAttachmentCard extends StatelessWidget {
+class AttachmentCard extends StatelessWidget {
   final String file;
   final void Function(String) onDownload;
-  final bool isDownload;
+  final AttachmentPreviewConfig config;
 
-  const SingleAttachmentCard({
+  const AttachmentCard({
     super.key,
     required this.file,
     required this.onDownload,
-    this.isDownload = true,
+    required this.config,
   });
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     final name = file.split('/').last;
     final extension = name.split('.').last.toLowerCase();
-    final isImage = ['jpg', 'jpeg', 'png', 'gif', 'webp'].contains(extension);
+    final isImage = FileUtils.isImage(extension);
 
     return Container(
-      width: 160,
+      width: 160.h,
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: Colors.white,
-        border: Border.all(color: Colors.grey.shade200),
+        color: theme.colorScheme.surface,
+        border: Border.all(color: theme.dividerTheme.color!),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.05),
@@ -116,13 +86,25 @@ class SingleAttachmentCard extends StatelessWidget {
                   heroAnimationTag: 'tag $name',
                   zoomWidget: ClipRRect(
                     borderRadius: BorderRadius.circular(12),
-                    child: FadeInImage.assetNetwork(
-                      placeholder: 'assets/default_image.png',
-                      image: file,
+                    child: Image.network(
+                      file,
                       height: 80,
                       width: double.infinity,
+                      loadingBuilder: (_, __, ___) => AppLoader.circular(),
                       fit: BoxFit.contain,
+                      errorBuilder: (_, __, ___) => Icon(
+                        Icons.broken_image,
+                        color: theme.colorScheme.onSurfaceVariant,
+                      ),
                     ),
+
+                    // FadeInImage.assetNetwork(
+                    //   placeholder: 'assets/default_image.png',
+                    //   image: file,
+                    //   height: 80,
+                    //   width: double.infinity,
+                    //   fit: BoxFit.contain,
+                    // ),
                   ),
                 )
               else
@@ -130,17 +112,17 @@ class SingleAttachmentCard extends StatelessWidget {
                   height: 80,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: getFileTypeColor(extension),
+                    color: FileUtils.getFileTypeColor(extension),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   alignment: Alignment.center,
                   child: Icon(
-                    getIconForFile(name),
+                    FileUtils.getIconForFile(name),
                     size: 36,
                     color: Colors.white,
                   ),
                 ),
-              if (isDownload)
+              if (config.showDownload && onDownload != null)
                 Positioned(
                   bottom: 6,
                   right: 6,

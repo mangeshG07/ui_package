@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 enum AppButtonType { primary, secondary, outline, text }
 
 enum AppButtonSize { small, medium, large }
@@ -70,6 +72,18 @@ final class AppFilePickerConfig {
     this.maxVideoDuration = 15,
     this.maxFileSize = 2 * 1024 * 1024,
     this.allowedExtensions = const ['pdf'],
+  });
+}
+
+class AttachmentPreviewConfig {
+  final bool showDownload;
+  final double height;
+  final TextStyle? fileNameStyle;
+
+  const AttachmentPreviewConfig({
+    this.showDownload = true,
+    this.height = 120,
+    this.fileNameStyle,
   });
 }
 

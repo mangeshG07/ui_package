@@ -56,10 +56,20 @@ enum MediaType { image, video, audio, document, all }
 final class AppFilePickerConfig {
   final bool allowVideo;
   final bool allowMultiImage;
+  final bool allowDocument;
+  final bool allowMultiDocument;
+  final int maxVideoDuration; // seconds
+  final int maxFileSize; // bytes
+  final List<String> allowedExtensions;
 
   const AppFilePickerConfig({
     this.allowVideo = false,
     this.allowMultiImage = false,
+    this.allowDocument = false,
+    this.allowMultiDocument = false,
+    this.maxVideoDuration = 15,
+    this.maxFileSize = 2 * 1024 * 1024,
+    this.allowedExtensions = const ['pdf'],
   });
 }
 

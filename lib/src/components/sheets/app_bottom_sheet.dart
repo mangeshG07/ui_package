@@ -16,6 +16,7 @@ class AppBottomSheet {
     List<Widget>? actions,
     bool showCloseButton = true,
     bool useRootNavigator = false,
+    TextStyle? textStyle = AppTextStyles.h5,
   }) {
     return showModalBottomSheet<T>(
       context: context,
@@ -40,7 +41,12 @@ class AppBottomSheet {
             children: [
               _buildHandle(),
               if (title != null || showCloseButton) ...[
-                _buildHeader(title: title, actions: actions, showCloseButton: showCloseButton),
+                _buildHeader(
+                  title: title,
+                  actions: actions,
+                  showCloseButton: showCloseButton,
+                  style: textStyle,
+                ),
                 AppSpacing.verticalSM,
               ],
               Expanded(
@@ -72,26 +78,17 @@ class AppBottomSheet {
     String? title,
     List<Widget>? actions,
     bool showCloseButton = true,
+    TextStyle? style = AppTextStyles.h5,
   }) {
     return Padding(
       padding: EdgeInsets.all(AppSpacing.md),
       child: Row(
         children: [
-          if (title != null)
-            Expanded(
-              child: Text(
-                title,
-                style: AppTextStyles.h5,
-              ),
-            ),
+          if (title != null) Expanded(child: Text(title, style: style)),
           if (actions != null) ...actions,
           if (showCloseButton)
             IconButton(
-              icon: Icon(
-                Icons.close,
-                size: 20.sp,
-                color: AppColors.grey600,
-              ),
+              icon: Icon(Icons.close, size: 20.sp, color: AppColors.grey600),
               onPressed: () => Get.back(),
               padding: EdgeInsets.zero,
               constraints: const BoxConstraints(),
@@ -115,12 +112,12 @@ class AppBottomSheet {
         mainAxisSize: MainAxisSize.min,
         children: options.map((option) {
           return ListTile(
-            leading: option.leading != null ? Icon(option.leading, color: option.color) : null,
+            leading: option.leading != null
+                ? Icon(option.leading, color: option.color)
+                : null,
             title: Text(
               option.title,
-              style: AppTextStyles.bodyLarge.copyWith(
-                color: option.color,
-              ),
+              style: AppTextStyles.bodyLarge.copyWith(color: option.color),
             ),
             onTap: () {
               Navigator.pop(context, option.value);
@@ -140,10 +137,7 @@ class AppBottomSheet {
     return show<T>(
       context: context,
       title: title,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: items,
-      ),
+      child: Column(mainAxisSize: MainAxisSize.min, children: items),
     );
   }
 
@@ -186,7 +180,9 @@ class AppBottomSheet {
                     onConfirm?.call();
                     Navigator.pop(context, confirmValue);
                   },
-                  type: isDestructive ? AppButtonType.text : AppButtonType.primary,
+                  type: isDestructive
+                      ? AppButtonType.text
+                      : AppButtonType.primary,
                 ),
               ),
             ],

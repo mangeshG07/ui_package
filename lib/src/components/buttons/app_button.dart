@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ui_package/ui_package.dart';
 
 class AppButton extends StatelessWidget {
@@ -125,6 +126,6 @@ class AppButton extends StatelessWidget {
   }
 
   Widget _loader() {
-    return const AppLoader();
+    return AppLoader(size: 20.r);
   }
 }

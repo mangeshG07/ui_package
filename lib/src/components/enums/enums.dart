@@ -11,6 +11,8 @@ enum AppFilePickType {
   galleryVideo,
   multiImage,
 }
+/// SnackbarType: Different types of snackbars
+enum SnackbarType { success, error, warning, info }
 
 enum ToastType { success, error, warning, info }
 

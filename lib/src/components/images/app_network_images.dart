@@ -38,26 +38,26 @@ class AppNetworkImage extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget imageWidget = useCache
         ? CachedNetworkImage(
-      imageUrl: imageUrl,
-      width: width?.w,
-      height: height?.h,
-      fit: fit,
-      memCacheWidth: cacheWidth,
-      memCacheHeight: cacheHeight,
-      placeholder: (context, url) => _buildPlaceholder(),
-      errorWidget: (context, url, error) => _buildError(),
-    )
+            imageUrl: imageUrl,
+            width: width?.w,
+            height: height?.h,
+            fit: fit,
+            memCacheWidth: cacheWidth,
+            memCacheHeight: cacheHeight,
+            placeholder: (context, url) => _buildPlaceholder(),
+            errorWidget: (context, url, error) => _buildError(),
+          )
         : Image.network(
-      imageUrl,
-      width: width?.w,
-      height: height?.h,
-      fit: fit,
-      loadingBuilder: (context, child, loadingProgress) {
-        if (loadingProgress == null) return child;
-        return _buildPlaceholder();
-      },
-      errorBuilder: (context, error, stackTrace) => _buildError(),
-    );
+            imageUrl,
+            width: width?.w,
+            height: height?.h,
+            fit: fit,
+            loadingBuilder: (context, child, loadingProgress) {
+              if (loadingProgress == null) return child;
+              return _buildPlaceholder();
+            },
+            errorBuilder: (context, error, stackTrace) => _buildError(),
+          );
 
     if (borderRadius != null || onTap != null) {
       return GestureDetector(
@@ -78,7 +78,8 @@ class AppNetworkImage extends StatelessWidget {
       height: height?.h,
       color: backgroundColor ?? AppColors.grey100,
       child: Center(
-        child: placeholder ??
+        child:
+            placeholder ??
             SizedBox(
               width: 20.w,
               height: 20.h,
@@ -97,12 +98,9 @@ class AppNetworkImage extends StatelessWidget {
       height: height?.h,
       color: backgroundColor ?? AppColors.grey100,
       child: Center(
-        child: errorWidget ??
-            Icon(
-              Icons.broken_image,
-              size: 24.sp,
-              color: AppColors.grey400,
-            ),
+        child:
+            errorWidget ??
+            Icon(Icons.broken_image, size: 24.sp, color: AppColors.grey400),
       ),
     );
   }
@@ -136,26 +134,26 @@ class AppAvatar extends StatelessWidget {
         borderRadius: borderRadius ?? BorderRadius.circular(size / 2),
         child: imageUrl != null && imageUrl!.isNotEmpty
             ? AppNetworkImage(
-          imageUrl: imageUrl!,
-          width: size,
-          height: size,
-          fit: BoxFit.cover,
-        )
+                imageUrl: imageUrl!,
+                width: size,
+                height: size,
+                fit: BoxFit.cover,
+              )
             : Container(
-          width: size,
-          height: size,
-          color: backgroundColor ?? AppColors.primary,
-          child: Center(
-            child: Text(
-              initials?.substring(0, 1).toUpperCase() ?? '?',
-              style: TextStyle(
-                fontSize: size * 0.4,
-                color: textColor ?? AppColors.white,
-                fontWeight: FontWeight.w600,
+                width: size,
+                height: size,
+                color: backgroundColor ?? AppColors.primary,
+                child: Center(
+                  child: Text(
+                    initials?.substring(0, 1).toUpperCase() ?? '?',
+                    style: TextStyle(
+                      fontSize: size * 0.4,
+                      color: textColor ?? AppColors.white,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
               ),
-            ),
-          ),
-        ),
       ),
     );
   }

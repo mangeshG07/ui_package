@@ -13,6 +13,7 @@ class AppFilePicker {
     AppFilePickerConfig config = const AppFilePickerConfig(),
   }) async {
     Get.bottomSheet(
+      backgroundColor: Colors.white,
       SafeArea(
         child: PickerSheet(
           config: config,

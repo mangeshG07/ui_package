@@ -13,7 +13,7 @@ class AppFilePicker {
     AppFilePickerConfig config = const AppFilePickerConfig(),
   }) async {
     Get.bottomSheet(
-      backgroundColor: Colors.white,
+      backgroundColor: Get.context!.theme.scaffoldBackgroundColor,
       SafeArea(
         child: PickerSheet(
           config: config,
@@ -25,8 +25,6 @@ class AppFilePicker {
     );
   }
 }
-
-
 
 // AppFilePicker.open(
 // config: const AppFilePickerConfig(

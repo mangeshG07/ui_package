@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:file_picker/file_picker.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:ui_package/ui_package.dart';
 import 'package:video_player/video_player.dart';
@@ -13,7 +14,7 @@ class PickerHelpers {
       source: ImageSource.camera,
       imageQuality: 50,
     );
-    return x != null ? File(x.path) : null;
+    return x != null ? _cropImage(File(x.path)) : null;
   }
 
   static Future<File?> pickGalleryImage() async {
@@ -21,7 +22,7 @@ class PickerHelpers {
       source: ImageSource.gallery,
       imageQuality: 50,
     );
-    return x != null ? File(x.path) : null;
+    return x != null ? _cropImage(File(x.path)) : null;
   }
 
   static Future<File?> pickCameraVideo() async {
@@ -127,5 +128,35 @@ class PickerHelpers {
       return '${(bytes / 1024).toStringAsFixed(0)}KB';
     }
     return '$bytes B';
+  }
+
+  static Future<File?> _cropImage(File file) async {
+    final cropped = await ImageCropper().cropImage(
+      sourcePath: file.path,
+      compressQuality: 70,
+      uiSettings: [
+        AndroidUiSettings(
+          toolbarTitle: 'Crop Image',
+          lockAspectRatio: false,
+          hideBottomControls: false,
+          aspectRatioPresets: [
+            CropAspectRatioPreset.original,
+            CropAspectRatioPreset.square,
+          ],
+        ),
+
+        IOSUiSettings(
+          title: 'Crop Image',
+          aspectRatioPresets: [
+            CropAspectRatioPreset.original,
+            CropAspectRatioPreset.square,
+          ],
+        ),
+      ],
+    );
+
+    if (cropped == null) return null;
+
+    return File(cropped.path);
   }
 }

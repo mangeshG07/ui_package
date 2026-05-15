@@ -33,6 +33,7 @@ dependencies:
   showcaseview: ^5.0.1
   widget_zoom: ^0.0.4
   flutter_svg: ^2.2.4
+  image_cropper: ^12.2.1
 
 dev_dependencies:
   flutter_test:

@@ -34,6 +34,7 @@ class AppMultiDropdown extends StatelessWidget {
         decoration: InputDecoration(
           fillColor: Theme.of(context).scaffoldBackgroundColor,
           filled: true,
+
           border: _border(),
           enabledBorder: _border(),
           focusedBorder: _border(),
@@ -50,7 +51,9 @@ class AppMultiDropdown extends StatelessWidget {
         showSelectedItems: false,
         menuProps: MenuProps(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          borderRadius: BorderRadius.circular(8),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
         ),
         constraints: const BoxConstraints(maxHeight: 300),
       ),

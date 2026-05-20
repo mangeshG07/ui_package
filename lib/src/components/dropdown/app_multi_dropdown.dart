@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:ui_package/src/core/theme/app_colors.dart';
 
 class AppMultiDropdown extends StatelessWidget {
   final List<String> items;
@@ -34,7 +35,6 @@ class AppMultiDropdown extends StatelessWidget {
         decoration: InputDecoration(
           fillColor: Theme.of(context).scaffoldBackgroundColor,
           filled: true,
-
           border: _border(),
           enabledBorder: _border(),
           focusedBorder: _border(),
@@ -50,7 +50,8 @@ class AppMultiDropdown extends StatelessWidget {
       popupProps: MultiSelectionPopupProps.menu(
         showSelectedItems: false,
         menuProps: MenuProps(
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          backgroundColor: AppColors.grey100,
+
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),

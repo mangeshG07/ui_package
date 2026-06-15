@@ -6,7 +6,7 @@ class TestWrapper {
   static Widget wrap(Widget child) {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
-      builder: (context, child) {
+      builder: (context, _) {
         return GetMaterialApp(debugShowCheckedModeBanner: false, home: child);
       },
     );

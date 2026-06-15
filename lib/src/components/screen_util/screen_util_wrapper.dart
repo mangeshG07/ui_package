@@ -63,10 +63,7 @@ class ScreenUtilWrapper extends StatelessWidget {
 class ResponsiveBuilder extends StatelessWidget {
   final Widget Function(BuildContext context, ScreenUtil screenUtil) builder;
 
-  const ResponsiveBuilder({
-    super.key,
-    required this.builder,
-  });
+  const ResponsiveBuilder({super.key, required this.builder});
 
   @override
   Widget build(BuildContext context) {
@@ -78,18 +75,14 @@ class ResponsiveBuilder extends StatelessWidget {
 class OrientationBuilderWidget extends StatelessWidget {
   final Widget Function(BuildContext context, Orientation orientation) builder;
 
-  const OrientationBuilderWidget({
-    super.key,
-    required this.builder,
-  });
+  const OrientationBuilderWidget({super.key, required this.builder});
 
   @override
   Widget build(BuildContext context) {
-    return builder(context, MediaQuery
-        .of(context)
-        .orientation);
+    return builder(context, MediaQuery.of(context).orientation);
   }
 }
+
 //
 // @override
 // Widget build(BuildContext context) {

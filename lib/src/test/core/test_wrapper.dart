@@ -7,10 +7,7 @@ class TestWrapper {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       builder: (context, child) {
-        return GetMaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: Scaffold(body: child),
-        );
+        return GetMaterialApp(debugShowCheckedModeBanner: false, home: child);
       },
     );
   }

@@ -59,3 +59,12 @@ export 'src/utils/size_context.dart';
 export 'src/utils/check_device_size.dart';
 export 'src/utils/debouncer.dart';
 export 'src/utils/system_utils.dart';
+
+export 'src/test/core/test_wrapper.dart';
+export 'src/test/core/mock_helper.dart';
+export 'src/test/core/fake_data.dart';
+export 'src/test/core/test_keys.dart';
+
+export 'src/test/getx/getx_test_helper.dart';
+export 'src/test/usecase/usecase_tester.dart';
+export 'src/test/widget/widget_tester_helper.dart';

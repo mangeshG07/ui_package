@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:ui_package/src/network/result.dart';
 import 'package:ui_package/ui_package.dart';
 
 abstract class BaseController extends GetxController {
@@ -7,11 +6,12 @@ abstract class BaseController extends GetxController {
 
   Future<void> callApi<T>({
     required Future<Result<T>> Function() request,
+    RxBool? loader,
     Function(T data)? onSuccess,
     Function(String message)? onError,
   }) async {
     try {
-      isLoading.value = true;
+      loader?.value = true;
 
       final result = await request();
 
@@ -23,7 +23,7 @@ abstract class BaseController extends GetxController {
           _showError(result.message);
       }
     } finally {
-      isLoading.value = false;
+      loader?.value = false;
     }
   }
 

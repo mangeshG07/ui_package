@@ -68,3 +68,6 @@ export 'src/test/core/test_keys.dart';
 export 'src/test/getx/getx_test_helper.dart';
 export 'src/test/usecase/usecase_tester.dart';
 export 'src/test/widget/widget_tester_helper.dart';
+
+export 'src/components/base/base_controller.dart';
+export 'src/network/result.dart';

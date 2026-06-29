@@ -9,6 +9,7 @@ abstract class BaseController extends GetxController {
     RxBool? loader,
     Function(T data)? onSuccess,
     Function(String message)? onError,
+    bool showError = false,
   }) async {
     try {
       loader?.value = true;
@@ -20,7 +21,7 @@ abstract class BaseController extends GetxController {
           onSuccess?.call(result.data);
         case Failure():
           onError?.call(result.message);
-          _showError(result.message);
+          if (showError) _showError(result.message);
       }
     } finally {
       loader?.value = false;

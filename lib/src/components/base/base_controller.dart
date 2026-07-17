@@ -2,8 +2,6 @@ import 'package:get/get.dart';
 import 'package:ui_package/ui_package.dart';
 
 abstract class BaseController extends GetxController {
-  final isLoading = false.obs;
-
   Future<void> callApi<T>({
     required Future<Result<T>> Function() request,
     RxBool? loader,
@@ -12,7 +10,8 @@ abstract class BaseController extends GetxController {
     bool showError = false,
   }) async {
     try {
-      loader?.value = true;
+      if (loader!.isTrue) return;
+      loader.value = true;
 
       final result = await request();
 

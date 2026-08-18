@@ -14,7 +14,13 @@ export 'src/components/shimmer/custom_shimmer.dart';
 
 // COMPONENTS
 export 'src/components/buttons/app_button.dart';
+export 'src/components/extensions/context_extensions.dart';
+export 'src/components/extensions/date_extension.dart';
+export 'src/components/extensions/helper_extensions.dart';
+export 'src/components/extensions/string_extensions.dart';
+export 'src/components/extensions/widget_extensions.dart';
 export 'src/components/buttons/animated_button.dart';
+export 'src/components/buttons/badge.dart';
 export 'src/components/fields/app_text_field.dart';
 export 'src/components/fields/app_label.dart';
 export 'src/components/fields/app_multi_dropdown.dart';
@@ -53,12 +59,15 @@ export 'src/network/app_api_response.dart';
 export 'src/network/app_network_exception.dart';
 export 'src/utils/app_internet.dart';
 export 'src/components/dialogs/app_dialog.dart';
+export 'src/components/dialogs/alert_dialog.dart';
+export 'src/components/search/search_bar.dart';
 export 'src/components/show_case/app_showcase_widget.dart';
 export 'src/utils/dimens.dart';
 export 'src/utils/size_context.dart';
 export 'src/utils/check_device_size.dart';
 export 'src/utils/debouncer.dart';
 export 'src/utils/system_utils.dart';
+export 'src/utils/custom_shadow.dart';
 
 export 'src/test/core/test_wrapper.dart';
 export 'src/test/core/mock_helper.dart';

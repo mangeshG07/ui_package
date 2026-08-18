@@ -41,9 +41,9 @@ class CustomSnackbar {
             Icon(icon, color: AppColors.white, size: 18.w),
             Text(
               message,
-              style: context.textTheme.bodyMedium?.copyWith(
-                color: AppColors.white,
-              ),
+              style: ContextExtensions(
+                context,
+              ).textTheme.bodyMedium?.copyWith(color: AppColors.white),
             ).expanded(),
           ],
         ),

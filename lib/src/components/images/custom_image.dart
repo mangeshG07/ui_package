@@ -1,7 +1,8 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+
+import 'file_image.dart';
 
 class CustomImage extends StatelessWidget {
   final String image;
@@ -26,7 +27,7 @@ class CustomImage extends StatelessWidget {
   bool get _isNetwork => image.startsWith('http');
   bool get _isSvg => image.toLowerCase().endsWith('.svg');
   bool get _isAsset => image.startsWith('assets/');
-  bool get _isFile => File(image).existsSync();
+  // bool get _isFile => File(image).existsSync();
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,10 @@ class CustomImage extends StatelessWidget {
       return _error();
     }
 
-    /// 🌐 Network SVG
+    // ============================================================
+    // NETWORK SVG
+    // ============================================================
+
     if (_isNetwork && _isSvg) {
       return SvgPicture.network(
         image,
@@ -48,7 +52,9 @@ class CustomImage extends StatelessWidget {
       );
     }
 
-    /// 🌐 Network Image
+    // ============================================================
+    // NETWORK IMAGE
+    // ============================================================
     if (_isNetwork) {
       return CachedNetworkImage(
         imageUrl: image,
@@ -59,8 +65,9 @@ class CustomImage extends StatelessWidget {
         errorWidget: (_, _, _) => _error(),
       );
     }
-
-    /// 🖼 Asset SVG
+    // ============================================================
+    // ASSET SVG
+    // ============================================================
     if (_isAsset && _isSvg) {
       return SvgPicture.asset(
         image,
@@ -73,7 +80,9 @@ class CustomImage extends StatelessWidget {
       );
     }
 
-    /// 🖼 Asset Image
+    // ============================================================
+    // ASSET IMAGE
+    // ============================================================
     if (_isAsset) {
       return Image.asset(
         image,
@@ -84,22 +93,36 @@ class CustomImage extends StatelessWidget {
       );
     }
 
-    /// 📂 File SVG
-    if (_isFile && _isSvg) {
-      return SvgPicture.file(
-        File(image),
-        height: height,
-        width: width,
-        fit: fit,
-      );
-    }
+    // /// 📂 File SVG
+    // if (_isFile && _isSvg) {
+    //   return SvgPicture.file(
+    //     File(image),
+    //     height: height,
+    //     width: width,
+    //     fit: fit,
+    //   );
+    // }
+    //
+    // /// 📂 File Image
+    // if (_isFile) {
+    //   return Image.file(File(image), height: height, width: width, fit: fit);
+    // }
 
-    /// 📂 File Image
-    if (_isFile) {
-      return Image.file(File(image), height: height, width: width, fit: fit);
-    }
+    // return _error();
 
-    return _error();
+    // ============================================================
+    // LOCAL FILE
+    // ============================================================
+
+    return buildFileImage(
+      path: image,
+      height: height,
+      width: width,
+      fit: fit,
+      color: color,
+      placeholder: _placeholder(),
+      errorWidget: _error(),
+    );
   }
 
   Widget _placeholder() {

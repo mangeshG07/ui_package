@@ -5,7 +5,7 @@ homepage: https://github.com/mangeshG07/ui_package.git
 repository: https://github.com/mangeshG07/ui_package.git
 
 environment:
-  sdk: ^3.9.2
+  sdk: ^3.13.2
   flutter: ">=1.17.0"
 
 dependencies:
@@ -18,7 +18,7 @@ dependencies:
   video_player: ^2.10.1
   image_picker: ^1.2.1
   get: ^4.7.3
-  file_picker: ^11.0.2
+  file_picker: ^12.2.0
   flutter_rating_bar: ^4.0.1
   intl: ^0.20.2
   shared_preferences: ^2.5.4

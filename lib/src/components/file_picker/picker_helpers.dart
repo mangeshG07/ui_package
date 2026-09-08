@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:file_picker/file_picker.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
@@ -45,7 +46,7 @@ class PickerHelpers {
       type: FileType.image,
     );
 
-    return result?.paths.whereType<String>().map((e) => File(e)).toList();
+    return result?.whereType<String>().map((e) => File(e)).toList();
   }
 
   static Future<File?> _validateVideo(File file) async {
@@ -67,6 +68,7 @@ class PickerHelpers {
     final config = AppFilePickerConfig();
 
     final result = await FilePicker.pickFiles(
+
       allowMultiple: true,
       type: FileType.custom,
       allowedExtensions: config.allowedExtensions,
@@ -76,7 +78,7 @@ class PickerHelpers {
 
     List<File> validFiles = [];
 
-    for (var file in result.files) {
+    for (var file in result) {
       final path = file.path;
       if (path == null) continue;
 
@@ -104,9 +106,9 @@ class PickerHelpers {
       allowedExtensions: allowedExtensions ?? config.allowedExtensions,
     );
 
-    if (result == null || result.files.single.path == null) return null;
+    if (result == null || result.single.path == null) return null;
 
-    final file = File(result.files.single.path!);
+    final file = File(result.single.path!);
 
     /// ✅ File size validation
     if (file.lengthSync() > config.maxFileSize) {

@@ -42,11 +42,11 @@ class PickerHelpers {
 
   static Future<List<File>?> pickMultiImages() async {
     final result = await FilePicker.pickFiles(
-      allowMultiple: true,
+      // allowMultiple: true,
       type: FileType.image,
     );
 
-    return result?.whereType<String>().map((e) => File(e)).toList();
+    return result.whereType<String>().map((e) => File(e)).toList();
   }
 
   static Future<File?> _validateVideo(File file) async {
@@ -68,13 +68,12 @@ class PickerHelpers {
     final config = AppFilePickerConfig();
 
     final result = await FilePicker.pickFiles(
-
-      allowMultiple: true,
+      // allowMultiple: true,
       type: FileType.custom,
       allowedExtensions: config.allowedExtensions,
     );
 
-    if (result == null) return null;
+    if (result.isEmpty) return null;
 
     List<File> validFiles = [];
 
@@ -106,7 +105,7 @@ class PickerHelpers {
       allowedExtensions: allowedExtensions ?? config.allowedExtensions,
     );
 
-    if (result == null || result.single.path == null) return null;
+    if (result.isEmpty || result.single.path == null) return null;
 
     final file = File(result.single.path!);
 
